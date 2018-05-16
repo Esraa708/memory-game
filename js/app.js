@@ -39,8 +39,9 @@ function shuffle(array) {
 }
 
 function displayCards() {
-    this.classList.add('open');
-    this.classList.add('show');
+    this.classList.toggle('open');
+    this.classList.toggle('show');
+    this.classList.toggle('stop');
     openCards.push(this);
     //pushing();
 
@@ -51,7 +52,7 @@ function pushing() {
     //openCards.push(this);
     if (openCards.length == 2) {
         if (openCards[0].innerHTML != openCards[1].innerHTML) {
-            unmatching();   
+           unmatching();
         } else {
             matching();
            
@@ -62,19 +63,24 @@ function pushing() {
 
 function matching() {
     openCards[0].classList.toggle('match');
-     //openCards[0].classList.add('open', 'show');
-   
-    openCards[1].classList.toggle('match'); //openCards[1].classList.add('open','show');
+    //penCards[0].classList.add('open', 'show');
+    openCards[1].classList.toggle('match'); 
+//penCards[1].classList.add('open','show');
     matchedCards.push(openCards);
-  openCards = [];
-
+  openCards=[];
 }
 
 function unmatching() {
+    setTimeout(function (){ 
     openCards[0].classList.remove('open', 'show');
     openCards[1].classList.remove('open', 'show');
-    openCards = [];
+    openCards[0].classList.remove('stop');
+    openCards[1].classList.remove('stop');
+   openCards=[];
+    },500);
+
 }
+
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
