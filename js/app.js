@@ -4,6 +4,7 @@
 let list = ['fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-cube', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-bomb', 'fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-cube', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-bomb'];
 let cardFa = document.querySelectorAll('.card .fa')
 let deck = document.getElementsByClassName('deck');
+console.log(deck);
 let card = document.querySelectorAll('.card');
 console.log(card);
 
@@ -52,34 +53,39 @@ function pushing() {
     //openCards.push(this);
     if (openCards.length == 2) {
         if (openCards[0].innerHTML != openCards[1].innerHTML) {
-           unmatching();
+            unmatching();
         } else {
             matching();
-           
+
         }
 
     }
 }
 
 function matching() {
-    openCards[0].classList.toggle('match');
-    //penCards[0].classList.add('open', 'show');
-    openCards[1].classList.toggle('match'); 
-//penCards[1].classList.add('open','show');
+    openCards[0].classList.add('match');
+    openCards[1].classList.add('match');
     matchedCards.push(openCards);
-  openCards=[];
+    openCards = [];
 }
 
 function unmatching() {
-    setTimeout(function (){ 
-    openCards[0].classList.remove('open', 'show');
-    openCards[1].classList.remove('open', 'show');
-    openCards[0].classList.remove('stop');
-    openCards[1].classList.remove('stop');
-   openCards=[];
-    },500);
+    setTimeout(function () {
+        openCards[0].classList.remove('open', 'show');
+        openCards[1].classList.remove('open', 'show');
+        openCards[0].classList.remove('stop');
+        openCards[1].classList.remove('stop');
+        openCards = [];
+    }, 500);
 
 }
+//making timer
+var timer = new Timer();
+timer.start();
+timer.addEventListener('secondsUpdated', function (e) {
+    $('#basicUsage').html(timer.getTimeValues().toString());
+});
+
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -88,7 +94,7 @@ function unmatching() {
 //looping through the card elements to open and show it when the user click it 
 for (let j = 0; j < cardArray.length; j++) {
     cardArray[j].addEventListener('click', displayCards);
-    cardArray[j].addEventListener('click',pushing);
+    cardArray[j].addEventListener('click', pushing);
 };
 console.log(openCards);
 
