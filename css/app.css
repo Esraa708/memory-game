@@ -111,7 +111,12 @@ h1 {
 .score-panel .stars li {
     list-style: none;
     display: inline-block;
+	color:red;
 }
+/*.fa  .fa-star{
+	color:red;
+}
+*/
 
 .score-panel .restart {
     float: right;

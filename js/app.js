@@ -10,9 +10,14 @@ console.log(card);
 
 let cardArray = [...card];
 
+
 //any array for the cards that the user opens 
 let openCards = [];
 let matchedCards = [];
+//initial varible for number of moves
+let  numOfMoves=0;
+//a varible that selects the span class to update number of moves 
+let moveCounter=document.querySelector('.moves');
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -39,19 +44,22 @@ function shuffle(array) {
     return array;
 }
 
+//this method for displaying cards on the page
 function displayCards() {
     this.classList.toggle('open');
     this.classList.toggle('show');
     this.classList.toggle('stop');
+	//after adding open,show and stop methods to the clicked element push this element in the array
     openCards.push(this);
-    //pushing();
-
 }
-//this method for pushing clicked items into the openCards array and then comparing them 
+/*this method for pushing clicked items into the openCards array
+* if they are the same apply match method
+*if they are different apply unmatch  method
+*/
+
 function pushing() {
-    //push the clicked element into  the openCards array
-    //openCards.push(this);
     if (openCards.length == 2) {
+		showMoves();
         if (openCards[0].innerHTML != openCards[1].innerHTML) {
             unmatching();
         } else {
@@ -67,6 +75,7 @@ function matching() {
     openCards[1].classList.add('match');
     matchedCards.push(openCards);
     openCards = [];
+
 }
 
 function unmatching() {
@@ -75,16 +84,45 @@ function unmatching() {
         openCards[1].classList.remove('open', 'show');
         openCards[0].classList.remove('stop');
         openCards[1].classList.remove('stop');
-        openCards = [];
+		openCards = [];
+		
+        
     }, 500);
 
 }
 //making timer
 var timer = new Timer();
+function startTimer(){;
 timer.start();
 timer.addEventListener('secondsUpdated', function (e) {
     $('#basicUsage').html(timer.getTimeValues().toString());
 });
+}
+let firstStar=document.querySelectorAll("#one");
+console.log("first star is"+firstStar);
+let secondStar=document.querySelectorAll("#two");
+let thirdStar=document.querySelectorAll("#three");
+function showMoves(){
+		numOfMoves++;		
+		moveCounter.textContent=numOfMoves;
+		//rating();
+}
+
+//rating function
+
+
+function rating(){
+	if(numOfMoves==3){
+	thirdStar.style.color="blue";	
+	}else if(numOfMoves==5){
+			secondStar.style.color="blue";	
+
+	}else if(numOfMoves==7){
+		
+	firstStar.style.color="blue";	
+
+	}	
+}
 
 
 /*
@@ -95,6 +133,8 @@ timer.addEventListener('secondsUpdated', function (e) {
 for (let j = 0; j < cardArray.length; j++) {
     cardArray[j].addEventListener('click', displayCards);
     cardArray[j].addEventListener('click', pushing);
+	cardArray[j].addEventListener('click', startTimer);
+
 };
 console.log(openCards);
 
