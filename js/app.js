@@ -98,10 +98,10 @@ timer.addEventListener('secondsUpdated', function (e) {
     $('#basicUsage').html(timer.getTimeValues().toString());
 });
 }
-let firstStar=document.querySelectorAll("#one");
+let firstStar=document.getElementById('one');
 console.log("first star is"+firstStar);
-let secondStar=document.querySelectorAll("#two");
-let thirdStar=document.querySelectorAll("#three");
+let secondStar=document.getElementById('two');
+let thirdStar=document.getElementById('three');
 function showMoves(){
 		numOfMoves++;		
 		moveCounter.textContent=numOfMoves;
