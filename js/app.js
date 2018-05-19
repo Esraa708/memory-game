@@ -105,7 +105,7 @@ let thirdStar=document.querySelectorAll("#three");
 function showMoves(){
 		numOfMoves++;		
 		moveCounter.textContent=numOfMoves;
-		//rating();
+		rating();
 }
 
 //rating function
