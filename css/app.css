@@ -19,6 +19,70 @@ body {
 body {
     background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
     font-family: 'Coda', cursive;
+    
+}
+
+/*
+css for the modal
+*/
+.modal{
+	
+   display: none;
+    z-index: 1;
+    background-color: rgb(242, 242, 242);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+}
+.model-content{
+	
+    height: auto;
+    width: 80%;
+    margin: 200px auto;
+    background-color: #fff; 
+    top: 0;
+    left: 0;
+   box-shadow: 9px 15px 13px 1px rgba(158,147,158,1);
+}
+.modal-header{
+    background-color: #1bb999;
+    padding: 10px;   
+    
+
+}
+.modal-header h1{
+    margin: 0;
+    color: #fff;
+}
+.modal-header span{
+    float: right;
+    color: #8a08e0;
+    cursor: pointer;
+    
+}
+.modal-header span:hover{
+    cursor: pointer;
+    color: black;
+}
+.modal-header .fa-fire{
+    color: orangered;
+}
+.modal-footer{
+    text-align: center;
+    margin-top: 20px;
+}
+.modal-footer button{
+    padding: 10px 20px;
+    background-color: #26ce6e;
+    color: #fff;
+    font-size: 20px;
+    font-family:fantasy;
+
+}
+.modal-footer button:hover{
+    background-color: orangered;
+    cursor: pointer;
 }
 
 .container {
@@ -111,7 +175,8 @@ h1 {
 .score-panel .stars li {
     list-style: none;
     display: inline-block;
-	color:red;
+    color:red;
+   
 }
 /*.fa  .fa-star{
 	color:red;

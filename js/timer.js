@@ -4,7 +4,7 @@
  * 
  * Do NOT use SRI with dynamically generated files! More information: https://www.jsdelivr.com/using-sri-with-dynamic-files
  */
-var module, Timer = function (n) {
+var module, Timer = function(n) {
     "use strict";
 
     function e() {
@@ -26,7 +26,7 @@ var module, Timer = function (n) {
     }
 
     function i() {
-        this.secondTenths = 0, this.seconds = 0, this.minutes = 0, this.hours = 0, this.days = 0, this.toString = function (n, e, t) {
+        this.secondTenths = 0, this.seconds = 0, this.minutes = 0, this.hours = 0, this.days = 0, this.toString = function(n, e, t) {
             n = n || ["hours", "minutes", "seconds"], e = e || ":", t = t || 2;
             var o, i = [];
             for (o = 0; o < t; o += 1) "0";
@@ -73,9 +73,9 @@ var module, Timer = function (n) {
         }
 
         function I(n) {
-            z = n && "string" == typeof n.precision ? n.precision : g, D = n && "function" == typeof n.callback ? n.callback : function () {}, B = n && !0 === n.countdown ? -1 : 1, H = n && 1 == n.countdown, n && "object" == typeof n.target && function (n) {
+            z = n && "string" == typeof n.precision ? n.precision : g, D = n && "function" == typeof n.callback ? n.callback : function() {}, B = n && !0 === n.countdown ? -1 : 1, H = n && 1 == n.countdown, n && "object" == typeof n.target && function(n) {
                 F = O(n)
-            }(n.target), n && "object" == typeof n.startValues && function (n) {
+            }(n.target), n && "object" == typeof n.startValues && function(n) {
                 G = O(n), J.secondTenths = G[v], J.seconds = G[p], J.minutes = G[y], J.hours = G[w], J.days = G[b], K.days = J.days, K.hours = K.days * l + J.hours, K.minutes = K.hours * f + J.minutes, K.seconds = K.minutes * d + J.seconds, K.secondTenths = K.seconds * c + J.secondTenths
             }(n.startValues), F = F || !H ? F : [0, 0, 0, 0, 0], X = {
                 precision: z,
@@ -99,7 +99,7 @@ var module, Timer = function (n) {
 
         function R() {
             P(),
-                function () {
+                function() {
                     for (var n in J) J.hasOwnProperty(n) && "number" == typeof J[n] && (J[n] = 0);
                     for (var n in K) K.hasOwnProperty(n) && "number" == typeof K[n] && (K[n] = 0)
                 }(), S("stopped")
@@ -114,9 +114,9 @@ var module, Timer = function (n) {
             Q = !1,
             W = !1,
             X = {};
-        void 0 !== this && (this.start = function (n) {
+        void 0 !== this && (this.start = function(n) {
             if (this.isRunning()) throw new Error("Timer already running");
-            this.isPaused() || I(n), x() || (function () {
+            this.isPaused() || I(n), x() || (function() {
                 var n, e = C[z];
                 switch (z) {
                     case j:
@@ -134,30 +134,30 @@ var module, Timer = function (n) {
                     default:
                         n = A
                 }
-                q = setInterval(function () {
+                q = setInterval(function() {
                     n(B), D(J), x() && (S("targetAchieved"), R())
                 }, e), Q = !0, W = !1
             }(), S("started"))
-        }, this.pause = function () {
+        }, this.pause = function() {
             P(), W = !0, S("paused")
-        }, this.stop = R, this.isRunning = function () {
+        }, this.stop = R, this.isRunning = function() {
             return Q
-        }, this.isPaused = function () {
+        }, this.isPaused = function() {
             return W
-        }, this.getTimeValues = function () {
+        }, this.getTimeValues = function() {
             return J
-        }, this.getTotalTimeValues = function () {
+        }, this.getTotalTimeValues = function() {
             return K
-        }, this.getConfig = function () {
+        }, this.getConfig = function() {
             return X
-        }, this.addEventListener = function (n, o) {
+        }, this.addEventListener = function(n, o) {
             e() ? N.addEventListener(n, o) : t() && N.on(n, o)
-        }, this.removeEventListener = function (n, o) {
+        }, this.removeEventListener = function(n, o) {
             e() ? N.removeEventListener(n, o) : t() && N.removeListener(n, o)
         })
     }
     var u = "undefined" != typeof window ? window.CustomEvent : void 0;
-    "undefined" != typeof window && "function" != typeof u && ((u = function (n, e) {
+    "undefined" != typeof window && "function" != typeof u && ((u = function(n, e) {
         e = e || {
             bubbles: !1,
             cancelable: !1,
@@ -191,7 +191,7 @@ var module, Timer = function (n) {
             days: 864e5
         },
         L = n && n.exports ? require("events") : void 0;
-    return n && n.exports ? n.exports = r : "function" == typeof define && define.amd && define([], function () {
+    return n && n.exports ? n.exports = r : "function" == typeof define && define.amd && define([], function() {
         return r
     }), r
 }(module);
