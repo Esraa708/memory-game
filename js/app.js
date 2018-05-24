@@ -7,10 +7,7 @@ let deck = document.getElementsByClassName('deck');
 console.log(deck);
 let card = document.querySelectorAll('.card');
 console.log(card);
-
 let cardArray = [...card];
-
-
 //any array for the cards that the user opens 
 let openCards = [];
 let matchedCards = [];
@@ -26,11 +23,12 @@ let firstStar = document.getElementById('one');
 let secondStar = document.getElementById('two');
 let thirdStar = document.getElementById('three');
 const modal = document.getElementById('main');
+//the close icon in  model
 const close = document.querySelector('.close');
+//play again button in model
 const playAgain = document.querySelector('.btn');
+//the body in the modal
 const modalBody = document.querySelectorAll('.modal-body');
-//const countingTime=timer.stop()-timer.start();
-//console.log(countingTime);
 console.log(modalBody);
 /*
  * Display the cards on the page
@@ -75,7 +73,8 @@ function displayCards() {
  * if they are the same apply match method
  *if they are different apply unmatch  method
  */
-
+//method that pushes cards into the array and compare weather htey are matched
+// or none
 function pushing() {
     if (openCards.length == 2) {
         showMoves();
@@ -88,7 +87,7 @@ function pushing() {
 
     }
 }
-
+//method that handles matched cards
 function matching() {
     openCards[0].classList.add('match');
     openCards[1].classList.add('match');
@@ -99,7 +98,7 @@ function matching() {
 
 
 }
-
+//method that handels non matched cards
 function unmatching() {
     setTimeout(function () {
         openCards[0].classList.remove('open', 'show');
@@ -132,7 +131,7 @@ function startTimer() {
         }
     }, 1000);
 }
-
+//method for displaying number of moves on the screen
 function showMoves() {
     numOfMoves++;
     moveCounter.textContent = numOfMoves;
@@ -145,9 +144,7 @@ function showMoves() {
     }
 }
 
-//rating function
-
-
+//rating stars function
 function rating() {
     if (numOfMoves >= 2 && numOfMoves < 20) {
         innerStars[2].style.display = "none";
@@ -165,18 +162,17 @@ function winning() {
         clearInterval(innerFun);
         modal.style.display = "block";
         creatBody();
-
     }
     close.addEventListener('click', closeModal);
     //window.addEventListener('click',closeModal);
     playAgain.addEventListener('click', closeModal);
     playAgain.addEventListener('click', restart);
 }
-
+//for closing modal
 function closeModal() {
     modal.style.display = "none";
 }
-
+//for creating the body of the modal
 function creatBody() {
     //  stars.style.display="block";    
     // stars.style.listStyleType="none";
@@ -199,11 +195,9 @@ for (let j = 0; j < cardArray.length; j++) {
     cardArray[j].addEventListener('click', pushing);
 
 };
-
+//for restart functionality
 let restartButton = document.querySelector(".restart");
-
 restartButton.addEventListener("click", restart);
-
 function restart() {
     matchedCards = [];
     start();
@@ -225,27 +219,6 @@ function restart() {
     for (let i = 0; i <= innerStars.length; i++) {
         console.log(innerStars[i]);
         innerStars[i].style.display = "block";
-    }
-   
-   
-    
-
+    }    
 }
-
-
-
-
-
-
 console.log(openCards);
-
-
-
-/*
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
