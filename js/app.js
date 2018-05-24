@@ -212,7 +212,7 @@ function restart() {
     sec = 0;
     min = 0; 
     hour = 0;
-    clearInterval(innnerFun);
+    clearInterval(innerFun);
     timer.innerHTML = "0 mins 0 secs";
     // clearInterval(innnerFun);
     
