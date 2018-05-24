@@ -19,8 +19,8 @@ let numOfMoves = 0;
 //a varible that selects the span class to update number of moves 
 let moveCounter = document.querySelector('.moves');
 let stars = document.querySelector('.stars');
-let innerStars=document.querySelectorAll('.fa-star');
-console.log('srtar is'+innerStars);
+let innerStars = document.querySelectorAll('.fa-star');
+console.log('srtar is' + innerStars);
 
 let firstStar = document.getElementById('one');
 let secondStar = document.getElementById('two');
@@ -113,40 +113,59 @@ function unmatching() {
 
 }
 //making timer
-var timer = new Timer();
-
-function startTimer() {;
-    timer.start();
-    timer.addEventListener('secondsUpdated', function (e) {
-        $('#basicUsage').html(timer.getTimeValues().toString());
-    });
+let sec = 0
+let min = 0;
+let hour = 0;
+let timer = document.querySelector("#myTimer");
+let innnerFun;
+function startTimer() {
+    innerFun = setInterval(function () {
+        timer.innerHTML = min + "min" + sec + "sec";
+        sec++;
+        if (sec == 60) {
+            min++;
+            sec = 0;
+        }
+        if (min == 60) {
+            hour++;
+            min = 0;
+        }
+    }, 1000);
 }
 
 function showMoves() {
     numOfMoves++;
     moveCounter.textContent = numOfMoves;
     rating();
+    if(numOfMoves==1){
+        sec=0;
+        min=0;
+        hour=0;
+    startTimer();
+    }
 }
 
 //rating function
 
 
 function rating() {
-    if (numOfMoves >=2 && numOfMoves<20 ) {
-            innerStars[2].style.display="none";  
-    } else if (numOfMoves>=20 && numOfMoves<30) {  
-            innerStars[1].style.display="none";
-    } else if (numOfMoves>= 30) {
-            innerStars[0].style.display="none";
-        
+    if (numOfMoves >= 2 && numOfMoves < 20) {
+        innerStars[2].style.display = "none";
+    } else if (numOfMoves >= 20 && numOfMoves < 30) {
+        innerStars[1].style.display = "none";
+    } else if (numOfMoves >= 30) {
+        innerStars[0].style.display = "none";
+
     }
 }
 /*+ if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 function winning() {
     if (matchedCards.length == 8) {
+        clearInterval(innerFun);
         modal.style.display = "block";
         creatBody();
+
     }
     close.addEventListener('click', closeModal);
     //window.addEventListener('click',closeModal);
@@ -159,13 +178,13 @@ function closeModal() {
 }
 
 function creatBody() {
-    // let pargraph = document.createElement('p');
-    //  stars.style.display="block";
-    // pargraph.innerHTML = 'You won the game with'+firstStar.innerText+secondStar.innerText+thirdStar.innerHTML+'stars in ';
-    // modalBody[0].appendChild(pargraph);
+    //  stars.style.display="block";    
     // stars.style.listStyleType="none";
-    let strs=stars.innerHTML;
-    document.getElementById('numofStars').innerHTML=strs;
+    let strs = stars.innerHTML;
+    document.getElementById('numofStars').innerHTML = strs;
+    clearInterval(innnerFun);
+    winningTime = timer.innerHTML;
+    document.getElementById('modalTime').innerHTML=winningTime;
 
 }
 
@@ -178,7 +197,6 @@ function creatBody() {
 for (let j = 0; j < cardArray.length; j++) {
     cardArray[j].addEventListener('click', displayCards);
     cardArray[j].addEventListener('click', pushing);
-    cardArray[j].addEventListener('click', startTimer);
 
 };
 
@@ -197,15 +215,20 @@ function restart() {
     for (let x = 0; x < cardArray.length; x++) {
         cardArray[x].classList.remove('open', 'show', 'stop', 'match');
     }
-    for(let i=0;i<=innerStars.length;i++){
+    sec = 0;
+    min = 0; 
+    hour = 0;
+    clearInterval(innnerFun);
+    timer.innerHTML = "0 mins 0 secs";
+    // clearInterval(innnerFun);
+    
+    for (let i = 0; i <= innerStars.length; i++) {
         console.log(innerStars[i]);
-        innerStars[i].style.display="block";
+        innerStars[i].style.display = "block";
     }
-    //var timer = new Timer();
-    timer.stop();
-    /*timer.addEventListener('secondsUpdated', function (e) {
-    $('#basicUsage').html("00:00:00");
-	*/
+   
+   
+    
 
 }
 

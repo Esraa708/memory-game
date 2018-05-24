@@ -25,8 +25,8 @@
                 </h1>
             </div>
             <div class="modal-body">
-                  <p> You  won the game with<span id="numofStars"></span>
-                     in <span>time</span></p> 
+                  <p> You  won the game with<span id="numofStars">stars </span>
+                     in <span id="modalTime">time</span></p> 
             </div>
             <div class="modal-footer">
                 <button class="btn">play again</button>
@@ -39,7 +39,7 @@
         </header>
 
         <section class="score-panel">
-            <span id="basicUsage">00:00:00 </span>
+            <span id="myTimer"></span>
             <ul class="stars">
                 <li id="one">
                     <i class="fa fa-star"></i>
@@ -110,15 +110,6 @@
             </li>
         </ul>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <script src="js/timer.js"></script>
-
-    <!--<script src="lib/easytimer/dist/easytimer.min.js"></script>
-<script>
-    var timerInstance = new Timer();
-</script>
--->
     <script src="js/app.js"></script>
 </body>
 
