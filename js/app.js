@@ -3,7 +3,8 @@
  */
 let list = ['fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-cube', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-bomb', 'fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-cube', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-bomb'];
 let cardFa = document.querySelectorAll('.card .fa')
-let deck = document.getElementsByClassName('deck');
+let deck = document.getElementsByClassName('deck')[0];
+console.log(deck);
 let card = document.querySelectorAll('.card');
 let cardArray = [...card];
 //any array for the cards that the user opens 
@@ -127,12 +128,13 @@ function showMoves() {
     numOfMoves++;
     moveCounter.textContent = numOfMoves;
     rating();
-    if (numOfMoves == 1) {
-        sec = 0;
-        min = 0;
-        hour = 0;
-    timerBegin();
-    }
+
+    // if (numOfMoves == 1) {
+    //     sec = 0;
+    //     min = 0;
+    //     hour = 0;
+    // timerBegin();
+    // }
 }
 //rating stars function
 function rating() {
@@ -173,10 +175,18 @@ function creatBody() {
 }
 
 //looping through the card elements to open and show it when the user click it 
+
+function callTimer(){
+   
+        sec = 0;
+        min = 0;
+        hour = 0;
+    timerBegin();
+}
+deck.addEventListener('click',callTimer,{once: true});
 for (let j = 0; j < cardArray.length; j++) {
     cardArray[j].addEventListener('click', displayCards);
     cardArray[j].addEventListener('click', pushing);
-
 };
 //for restart functionality
 let restartButton = document.querySelector(".restart");
@@ -192,14 +202,13 @@ function restart() {
     for (let x = 0; x < cardArray.length; x++) {
         cardArray[x].classList.remove('open', 'show', 'stop', 'match');
     }
-    sec = 0;
-    min = 0;
-    hour = 0;
     clearInterval(innerFun);
+    deck.addEventListener('click',callTimer,{once: true});
+    
     timer.innerHTML = "0 mins 0 secs";
-    for (let i = 0; i <= innerStars.length; i++) {
-        console.log(innerStars[i]);
-        innerStars[i].style.display = "block";
-    }
+    // for (let i = 0; i <= innerStars.length; i++) {
+    //     console.log(innerStars[i]);
+    //     innerStars[i].style.display = "block";
+    // }
 }
 
