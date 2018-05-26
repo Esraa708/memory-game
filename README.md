@@ -3,7 +3,7 @@ _This is the third project for frntend nanodegree track_
 ## How to play?
 _Go to this link [memory Game](https://esraa708.github.io/memory-game/)_
 ## Instructions
-* click on tow cards 
+* click on two cards 
 * if they match a new color will added to them
 * until you match all cards a congratulation model will appear and till you the time you took to win and number of stars
 # How I built the game
