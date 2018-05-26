@@ -129,12 +129,7 @@ function showMoves() {
     moveCounter.textContent = numOfMoves;
     rating();
 
-    // if (numOfMoves == 1) {
-    //     sec = 0;
-    //     min = 0;
-    //     hour = 0;
-    // timerBegin();
-    // }
+ 
 }
 //rating stars function
 function rating() {
@@ -203,9 +198,10 @@ function restart() {
         cardArray[x].classList.remove('open', 'show', 'stop', 'match');
     }
     clearInterval(innerFun);
+    timer.innerHTML = "0 mins 0 secs";
     deck.addEventListener('click',callTimer,{once: true});
     
-    timer.innerHTML = "0 mins 0 secs";
+    
     // for (let i = 0; i <= innerStars.length; i++) {
     //     console.log(innerStars[i]);
     //     innerStars[i].style.display = "block";
