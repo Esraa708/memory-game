@@ -4,9 +4,7 @@
 let list = ['fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-cube', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-bomb', 'fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-cube', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-bomb'];
 let cardFa = document.querySelectorAll('.card .fa')
 let deck = document.getElementsByClassName('deck');
-console.log(deck);
 let card = document.querySelectorAll('.card');
-console.log(card);
 let cardArray = [...card];
 //any array for the cards that the user opens 
 let openCards = [];
@@ -17,8 +15,6 @@ let numOfMoves = 0;
 let moveCounter = document.querySelector('.moves');
 let stars = document.querySelector('.stars');
 let innerStars = document.querySelectorAll('.fa-star');
-console.log('srtar is' + innerStars);
-
 let firstStar = document.getElementById('one');
 let secondStar = document.getElementById('two');
 let thirdStar = document.getElementById('three');
@@ -29,7 +25,7 @@ const close = document.querySelector('.close');
 const playAgain = document.querySelector('.btn');
 //the body in the modal
 const modalBody = document.querySelectorAll('.modal-body');
-console.log(modalBody);
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -43,8 +39,6 @@ function start() {
     }
 }
 start();
-
-
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length,
@@ -93,10 +87,7 @@ function matching() {
     openCards[1].classList.add('match');
     matchedCards.push(openCards);
     openCards = [];
-    console.log("matched cards" + matchedCards.length);
     winning();
-
-
 }
 //method that handels non matched cards
 function unmatching() {
@@ -117,9 +108,9 @@ let min = 0;
 let hour = 0;
 let timer = document.querySelector("#myTimer");
 let innnerFun;
-function startTimer() {
+function timerBegin() {
     innerFun = setInterval(function () {
-        timer.innerHTML = min + "min" + sec + "sec";
+        timer.innerHTML = min + " min " + sec + " sec";
         sec++;
         if (sec == 60) {
             min++;
@@ -136,26 +127,26 @@ function showMoves() {
     numOfMoves++;
     moveCounter.textContent = numOfMoves;
     rating();
-    if(numOfMoves==1){
-        sec=0;
-        min=0;
-        hour=0;
-    startTimer();
+    if (numOfMoves == 1) {
+        sec = 0;
+        min = 0;
+        hour = 0;
+    timerBegin();
     }
 }
-
 //rating stars function
 function rating() {
-    if (numOfMoves >= 2 && numOfMoves < 20) {
+    if (numOfMoves >=15&& numOfMoves < 25) {
         innerStars[2].style.display = "none";
-    } else if (numOfMoves >= 20 && numOfMoves < 30) {
+    } else if (numOfMoves >= 25 && numOfMoves < 40) {
         innerStars[1].style.display = "none";
-    } else if (numOfMoves >= 30) {
+    } else if (numOfMoves >= 40) {
         innerStars[0].style.display = "none";
 
     }
 }
-/*+ if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
+/*+ if all cards have matched, display a message with the final score 
+(put this functionality in another function that you call from this one)
  */
 function winning() {
     if (matchedCards.length == 8) {
@@ -164,8 +155,7 @@ function winning() {
         creatBody();
     }
     close.addEventListener('click', closeModal);
-    //window.addEventListener('click',closeModal);
-    playAgain.addEventListener('click', closeModal);
+        playAgain.addEventListener('click', closeModal);
     playAgain.addEventListener('click', restart);
 }
 //for closing modal
@@ -174,21 +164,14 @@ function closeModal() {
 }
 //for creating the body of the modal
 function creatBody() {
-    //  stars.style.display="block";    
-    // stars.style.listStyleType="none";
     let strs = stars.innerHTML;
     document.getElementById('numofStars').innerHTML = strs;
     clearInterval(innnerFun);
     winningTime = timer.innerHTML;
-    document.getElementById('modalTime').innerHTML=winningTime;
+    document.getElementById('modalTime').innerHTML = winningTime;
 
 }
 
-
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- */
 //looping through the card elements to open and show it when the user click it 
 for (let j = 0; j < cardArray.length; j++) {
     cardArray[j].addEventListener('click', displayCards);
@@ -203,22 +186,20 @@ function restart() {
     start();
     numOfMoves = 0;
     moveCounter.textContent = numOfMoves;
-    thirdStar.style.color = "red";
-    secondStar.style.color = "red";
-    firstStar.style.color = "red";
+    thirdStar.style.color = "#307672";
+    secondStar.style.color = "#307672";
+    firstStar.style.color = "#307672";
     for (let x = 0; x < cardArray.length; x++) {
         cardArray[x].classList.remove('open', 'show', 'stop', 'match');
     }
     sec = 0;
-    min = 0; 
+    min = 0;
     hour = 0;
     clearInterval(innerFun);
     timer.innerHTML = "0 mins 0 secs";
-    // clearInterval(innnerFun);
-    
     for (let i = 0; i <= innerStars.length; i++) {
         console.log(innerStars[i]);
         innerStars[i].style.display = "block";
-    }    
+    }
 }
-console.log(openCards);
+

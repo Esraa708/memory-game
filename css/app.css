@@ -14,20 +14,23 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    color: #4f323b;
+    font-size: 25px;
+    font-weight: 200;
 }
 
 body {
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
-    font-family: 'Coda', cursive;
-    
+    background: #ffffff url('../img/geometry2.png');
+    /* Background pattern from Subtle Patterns */
+    font-family: 'Lobster', cursive;
 }
 
 /*
 css for the modal
 */
-.modal{
-	
-   display: none;
+
+.modal {
+    display: none;
     z-index: 1;
     background-color: rgb(242, 242, 242);
     width: 100%;
@@ -35,53 +38,66 @@ css for the modal
     position: fixed;
     overflow: auto;
 }
-.model-content{
-	
+
+.model-content {
     height: auto;
     width: 80%;
     margin: 200px auto;
-    background-color: #fff; 
+    background-color: #fff;
+    font-family: 'Lobster', cursive;
     top: 0;
     left: 0;
-   box-shadow: 9px 15px 13px 1px rgba(158,147,158,1);
+    box-shadow: 9px 15px 13px 1px rgba(158, 147, 158, 1);
 }
-.modal-header{
-    background-color: #1bb999;
-    padding: 10px;   
-    
 
+.modal-header {
+    background-color: #C06A62;
+    padding: 10px;
 }
-.modal-header h1{
+
+.modal-header h1 {
     margin: 0;
+    font-size: 30px;
     color: #fff;
 }
-.modal-header span{
+
+.modal-header span {
     float: right;
-    color: #8a08e0;
-    cursor: pointer;
-    
-}
-.modal-header span:hover{
-    cursor: pointer;
     color: black;
+    cursor: pointer;
+    font-size: 40px;
 }
-.modal-header .fa-fire{
+
+.modal-header span:hover {
+    cursor: pointer;
+    color: #307672;
+}
+
+.modal-header .fa-fire {
     color: orangered;
 }
-.modal-footer{
+
+#numofStars {
+    list-style: none;
+    display: inline-block;
+}
+
+.modal-footer {
     text-align: center;
     margin-top: 20px;
 }
-.modal-footer button{
+
+.modal-footer button {
     padding: 10px 20px;
-    background-color: #26ce6e;
+    background-color: #C06A62;
     color: #fff;
     font-size: 20px;
-    font-family:fantasy;
-
+    font-family: 'Lobster', cursive;
+    margin-bottom: 2%;
 }
-.modal-footer button:hover{
-    background-color: orangered;
+
+.modal-footer button:hover {
+    background-color: #307672;
     cursor: pointer;
 }
 
@@ -93,8 +109,9 @@ css for the modal
 }
 
 h1 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
+    font-family: 'Lobster', cursive;
+    font-weight: 700;
+    font-size: 50px;
 }
 
 /*
@@ -102,9 +119,10 @@ h1 {
  */
 
 .deck {
-    width: 660px;
+    /* width: 660px; */
+    width: 60%;
     min-height: 680px;
-    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    background: #C06961;
     padding: 32px;
     border-radius: 10px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
@@ -119,7 +137,7 @@ h1 {
 .deck .card {
     height: 125px;
     width: 125px;
-    background: #2e3d49;
+    background: #6ba083;
     font-size: 0;
     color: #ffffff;
     border-radius: 8px;
@@ -128,17 +146,20 @@ h1 {
     justify-content: center;
     align-items: center;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
-	transition: all 0.6sec ease;
-	transform-style:preserved-3d;
-    
+    transition: all 0.6sec ease;
+    transform-style: preserved-3d;
 }
-.deck .card:hover{
-	transform:rotateY(180deg);
+
+.deck .card:hover {
+    transform: rotateY(180deg);
 }
 
 .deck .card.open {
     transform: rotateY(0);
-    background: #02b3e4;
+    /* background: #02b3e4; */
+    /* background: #6ba0
+    83; */
+    background: #307672;
     cursor: default;
 }
 
@@ -148,10 +169,11 @@ h1 {
 
 .deck .card.match {
     cursor: default;
-    background: red;
+    background: #4f323b;
     font-size: 33px;
 }
-.deck .card.stop{
+
+.deck .card.stop {
     pointer-events: none;
 }
 
@@ -175,15 +197,23 @@ h1 {
 .score-panel .stars li {
     list-style: none;
     display: inline-block;
-    color:red;
-   
+    color: #307672;
 }
-/*.fa  .fa-star{
-	color:red;
-}
-*/
 
 .score-panel .restart {
     float: right;
     cursor: pointer;
+}
+@media screen and (max-width: 800px){
+    .deck .card {
+        width: 20%;
+        margin-left: 5px;
+    }
+}
+
+@media screen and (min-width:800px) {
+    .deck .card {
+        width: 20%;
+        margin-left: 5px;
+    }
 }
