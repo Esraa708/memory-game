@@ -107,7 +107,7 @@ let sec = 0
 let min = 0;
 let hour = 0;
 let timer = document.querySelector("#myTimer");
-let innnerFun;
+let innerFun;
 function timerBegin() {
     innerFun = setInterval(function () {
         timer.innerHTML = min + " min " + sec + " sec";
@@ -166,7 +166,7 @@ function closeModal() {
 function creatBody() {
     let strs = stars.innerHTML;
     document.getElementById('numofStars').innerHTML = strs;
-    clearInterval(innnerFun);
+    clearInterval(innerFun);
     winningTime = timer.innerHTML;
     document.getElementById('modalTime').innerHTML = winningTime;
 
