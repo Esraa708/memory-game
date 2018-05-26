@@ -21,7 +21,6 @@ body {
 
 body {
     background: #ffffff url('../img/geometry2.png');
-    /* Background pattern from Subtle Patterns */
     font-family: 'Lobster', cursive;
 }
 
@@ -131,7 +130,6 @@ h1 {
     justify-content: space-between;
     align-items: center;
     margin: 0 0 3em;
-    perspective: 700;
 }
 
 .deck .card {
@@ -146,19 +144,12 @@ h1 {
     justify-content: center;
     align-items: center;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
-    transition: all 0.6sec ease;
-    transform-style: preserved-3d;
+
 }
 
-.deck .card:hover {
-    transform: rotateY(180deg);
-}
 
 .deck .card.open {
     transform: rotateY(0);
-    /* background: #02b3e4; */
-    /* background: #6ba0
-    83; */
     background: #307672;
     cursor: default;
 }
