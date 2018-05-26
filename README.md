@@ -1,5 +1,5 @@
 # **Memory Game Udacity Project**
-_This is the third project for frntend nanodegree track_
+_This is the third project for frontend nanodegree track_
 ## How to play?
 _Go to this link [memory Game](https://esraa708.github.io/memory-game/)_
 ## Instructions
