@@ -3,9 +3,10 @@
  */
 let list = ['fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-cube', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-bomb', 'fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-cube', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-bomb'];
 let cardFa = document.querySelectorAll('.card .fa')
-let deck = document.getElementsByClassName('deck')[0];
-console.log(deck);
+let deck = document.querySelector('.deck');
 let card = document.querySelectorAll('.card');
+// let firstCard=document.querySelector('.card');
+// console.log(deck);
 let cardArray = [...card];
 //any array for the cards that the user opens 
 let openCards = [];
@@ -33,13 +34,18 @@ const modalBody = document.querySelectorAll('.modal-body');
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+
+
 function start() {
     let shuf = shuffle(list);
     for (let i = 0; i < shuf.length; i++) {
         cardFa[i].className = (shuf[i]);
+
     }
+
 }
 start();
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length,
@@ -92,7 +98,7 @@ function matching() {
 }
 //method that handels non matched cards
 function unmatching() {
-    setTimeout(function () {
+    setTimeout(function() {
         openCards[0].classList.remove('open', 'show');
         openCards[1].classList.remove('open', 'show');
         openCards[0].classList.remove('stop');
@@ -104,15 +110,15 @@ function unmatching() {
 
 }
 //making timer
-let sec = 0
+let sec = 1;
 let min = 0;
 let hour = 0;
 let timer = document.querySelector("#myTimer");
 let innerFun;
 function timerBegin() {
-    innerFun = setInterval(function () {
-        timer.innerHTML = min + " min " + sec + " sec";
+    innerFun = setInterval(function() {
         sec++;
+        timer.innerHTML = min + " min " + sec + " sec";
         if (sec == 60) {
             min++;
             sec = 0;
@@ -128,36 +134,26 @@ function showMoves() {
     numOfMoves++;
     moveCounter.textContent = numOfMoves;
     rating();
-
-    // if (numOfMoves == 1) {
-    //     sec = 0;
-    //     min = 0;
-    //     hour = 0;
-    // timerBegin();
-    // }
 }
 //rating stars function
 function rating() {
-    if (numOfMoves >=15&& numOfMoves < 25) {
+    if (numOfMoves >= 2 && numOfMoves < 4) {
         innerStars[2].style.display = "none";
-    } else if (numOfMoves >= 25 && numOfMoves < 40) {
+    } else if (numOfMoves >= 4 && numOfMoves < 6) {
         innerStars[1].style.display = "none";
-    } else if (numOfMoves >= 40) {
-        innerStars[0].style.display = "none";
-
     }
 }
 /*+ if all cards have matched, display a message with the final score 
 (put this functionality in another function that you call from this one)
  */
-function winning() {
+let winning = () => {
     if (matchedCards.length == 8) {
         clearInterval(innerFun);
         modal.style.display = "block";
         creatBody();
     }
     close.addEventListener('click', closeModal);
-        playAgain.addEventListener('click', closeModal);
+    playAgain.addEventListener('click', closeModal);
     playAgain.addEventListener('click', restart);
 }
 //for closing modal
@@ -174,23 +170,26 @@ function creatBody() {
 
 }
 
-//looping through the card elements to open and show it when the user click it 
 
-function callTimer(){
-   
-        sec = 0;
-        min = 0;
-        hour = 0;
+function callTimer() {
+    sec = 0;
+    min = 0;
+    hour = 0;
     timerBegin();
 }
-deck.addEventListener('click',callTimer,{once: true});
+deck.addEventListener('click', callTimer, {
+    once: true
+});
+//looping through the card elements to open and show it when the user click it 
 for (let j = 0; j < cardArray.length; j++) {
+    // cardArray[j].addEventListener('click', callTimer,{once: true});
     cardArray[j].addEventListener('click', displayCards);
     cardArray[j].addEventListener('click', pushing);
 };
 //for restart functionality
 let restartButton = document.querySelector(".restart");
 restartButton.addEventListener("click", restart);
+
 function restart() {
     matchedCards = [];
     start();
@@ -203,12 +202,13 @@ function restart() {
         cardArray[x].classList.remove('open', 'show', 'stop', 'match');
     }
     clearInterval(innerFun);
-    deck.addEventListener('click',callTimer,{once: true});
-    
     timer.innerHTML = "0 mins 0 secs";
+    deck.addEventListener('click', callTimer, {
+        once: true
+    });
+
     // for (let i = 0; i <= innerStars.length; i++) {
     //     console.log(innerStars[i]);
     //     innerStars[i].style.display = "block";
     // }
 }
-
