@@ -5,8 +5,6 @@ let list = ['fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-bolt'
 let cardFa = document.querySelectorAll('.card .fa')
 let deck = document.querySelector('.deck');
 let card = document.querySelectorAll('.card');
-// let firstCard=document.querySelector('.card');
-// console.log(deck);
 let cardArray = [...card];
 //any array for the cards that the user opens 
 let openCards = [];
